@@ -120,12 +120,13 @@
 {
     NSDictionary * langugeStrings = self.strings[language];
     NSString * string = langugeStrings[key];
-#if DEBUG
+
     if (!string) {
         NSLog(@"MCLocalization: no string for key %@ in language %@", key, language);
+        return [NSString stringWithFormat:@"[%@]", key];
+    } else {
+        return string;
     }
-#endif
-    return string;
 }
 
 - (NSString *)stringForKey:(NSString *)key
